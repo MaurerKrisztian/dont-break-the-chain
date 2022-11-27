@@ -1,0 +1,28 @@
+@import "src/shared.scss";
+
+.box {
+  padding: 2px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+  display: inline-block;
+  color: white;
+  cursor: pointer;
+}
+
+.not-done{
+  background: grey;
+}
+
+.done {
+  background: green;
+}
+
+.skipped {
+  background: red;
+}
+
+.popup-state {
+  color: white;
+}
