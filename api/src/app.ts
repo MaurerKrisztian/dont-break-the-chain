@@ -20,9 +20,9 @@ async function main() {
         server: app,
         globalMiddlewares: [],
         openapi: {
+            spec: {openapi: "1", info: {title:"tracker", version:"3.0.0"}},
             swaggerUi: "/docs",
             apiDocs: "raw-docs",
-            title: "habit-tracker"
         }
     });
     server.listen(port, () => {
