@@ -1,15 +1,18 @@
-import {Body, Controller, Get, Param, Post} from "bonfire-rest";
+import {Body, Controller, Get, Param, Post, Req} from "bonfire-rest";
 import {User, UserCreateDto} from "../dto/user-create.dto";
 import {UserService} from "../services/user.service";
 import {UserModel} from "../schema/user.schema";
+import {Role} from "../../auth/role.decorator";
 
 @Controller( "users")
 export class UsersController {
     constructor(private readonly userService: UserService) {
     }
 
+    @Role("user")
     @Get()
-    get(){
+    get(@Req() req: any){
+        console.log("user", req["user"])
         return UserModel.find({})
     }
 
