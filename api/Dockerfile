@@ -1,5 +1,5 @@
 FROM node:14.19-alpine
-
+LABEL name="dont-break-the-chain-api"
 # Create a directory where our app will be placed
 RUN mkdir -p /usr/src/app
 

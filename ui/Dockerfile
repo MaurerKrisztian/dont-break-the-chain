@@ -1,6 +1,6 @@
 # Create image based on the official Node 10 image from dockerhub
 FROM node:14.19-alpine
-
+LABEL name="dont-break-the-chain-ui"
 # Create a directory where our app will be placed
 RUN mkdir -p /app
 
