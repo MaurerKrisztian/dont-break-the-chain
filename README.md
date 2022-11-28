@@ -11,8 +11,13 @@ The productivity method commits you to completing a daily goal for an extended p
 ```
 git clone git@github.com:MaurerKrisztian/dont-break-the-chain.git
 cd dont-break-the-chain
-docker-compose up
+sudo docker-compose --file ./docker-compose.build.yml up
 ```
+or run the latest release
+```
+sudo docker-compose --file ./docker-compose.latest.yml up
+```
+
 - UI will be available on http://localhost:4200/, api: http://localhost:3000/
 
 ### Api start
@@ -31,3 +36,14 @@ npm install
 npm start
 ```
 - open: http://localhost:4200/
+
+## Images
+
+#### UI
+```
+docker pull ghcr.io/maurerkrisztian/dont-break-the-chain-ui:latest
+```
+#### API
+```
+docker pull ghcr.io/maurerkrisztian/dont-break-the-chain-api:main
+```
