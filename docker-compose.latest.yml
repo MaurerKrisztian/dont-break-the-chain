@@ -8,7 +8,7 @@ services:
       - "4200:4200" # specify port forewarding
 
   express: #name of the second service
-    image: ghcr.io/maurerkrisztian/dont-break-the-chain-api:main # specify the directory of the Dockerfile
+    image: ghcr.io/maurerkrisztian/dont-break-the-chain-api:latest # specify the directory of the Dockerfile
     ports:
       - "3000:3000" #specify ports forewarding
 
