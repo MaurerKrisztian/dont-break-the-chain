@@ -45,5 +45,5 @@ docker pull ghcr.io/maurerkrisztian/dont-break-the-chain-ui:latest
 ```
 #### API
 ```
-docker pull ghcr.io/maurerkrisztian/dont-break-the-chain-api:main
+docker pull ghcr.io/maurerkrisztian/dont-break-the-chain-api:latest
 ```
