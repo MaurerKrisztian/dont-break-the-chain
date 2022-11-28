@@ -10,7 +10,7 @@ async function main() {
 
     await connectDB()
 
-    const port = Env.asNumber("PORT") || 3000;
+    const port = Env.asNumber("PORT", 3000);
     const app = express()
     app.use(cors())
     const server = await ServerBuilder.build({
