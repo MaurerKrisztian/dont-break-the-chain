@@ -1,23 +1,27 @@
-import {IMiddleware} from "bonfire-rest/middleware/middleware.interface";
-import e from "express"
+import { IMiddleware } from 'bonfire-rest/middleware/middleware.interface';
+import e from 'express';
 import * as jwt from 'jsonwebtoken';
-import {Env, Injectable, UnauthorizedError} from "bonfire-rest";
+import { Env, Injectable, UnauthorizedError } from 'bonfire-rest';
 
 export interface IPayload {
     roles: string[];
     userId: string;
 }
 
-@Injectable({instantiation:"singleton"})
+@Injectable({ instantiation: 'singleton' })
 export class JwtAuthService {
-
-    requestHandler(req: e.Request & {user: IPayload}, res: e.Response, isBearer: boolean, privateKey: string = 'key') {
+    requestHandler(
+        req: e.Request & { user: IPayload },
+        res: e.Response,
+        isBearer: boolean,
+        privateKey: string = 'key',
+    ) {
         const authentication: string = req.headers['authentication'] as string;
         if (!authentication) {
-            return
+            return;
         }
         const token = isBearer ? authentication.split(' ')[1] : authentication;
-        if (!token){
+        if (!token) {
             return;
         }
         const content: IPayload = jwt.verify(token, privateKey) as IPayload;
@@ -29,29 +33,25 @@ export class JwtAuthService {
     }
 }
 
-
-@Injectable({instantiation:"singleton"})
+@Injectable({ instantiation: 'singleton' })
 export class JwtMiddleware implements IMiddleware {
     constructor(private readonly jwtAuthService: JwtAuthService) {}
 
-    handle(req: e.Request & {user: IPayload}, res: e.Response, next: Function) {
-        this.jwtAuthService.requestHandler(req, res, true, Env.asString("SECRET", "secret"));
+    handle(req: e.Request & { user: IPayload }, res: e.Response, next: Function) {
+        this.jwtAuthService.requestHandler(req, res, true, Env.asString('SECRET', 'secret'));
         next();
     }
 }
 
-
-@Injectable({instantiation:"singleton"})
+@Injectable({ instantiation: 'singleton' })
 export class AccessMiddleware implements IMiddleware {
     constructor(private readonly role: string) {}
 
-    handle(req: e.Request & {user: IPayload}, res: e.Response, next: Function, actionMeta?: any) {
-        if (!req.user.roles.includes(this.role)){
-            throw new UnauthorizedError("You dont have proper role")
+    handle(req: e.Request & { user: IPayload }, res: e.Response, next: Function, actionMeta?: any) {
+        if (!req.user.roles.includes(this.role)) {
+            throw new UnauthorizedError('You dont have proper role');
         }
 
         next();
     }
 }
-
-

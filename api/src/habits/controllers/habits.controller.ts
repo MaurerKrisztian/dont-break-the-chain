@@ -1,14 +1,13 @@
-import {Body, Controller, Delete, Get, Param, Post} from "bonfire-rest";
-import {CreateHabitDto} from "../dto/create-habit.dto";
-import {HabitModel} from "../schema/habit.schema";
-import {habitDayStatusModel} from "../../daily-status/schema/habit-day-status.schema";
+import { Body, Controller, Delete, Get, Param, Post } from 'bonfire-rest';
+import { CreateHabitDto } from '../dto/create-habit.dto';
+import { HabitModel } from '../schema/habit.schema';
+import { habitDayStatusModel } from '../../daily-status/schema/habit-day-status.schema';
 
-@Controller("habits")
+@Controller('habits')
 export class HabitsController {
-
     @Get('/')
-    get(){
-        return HabitModel.find({})
+    get() {
+        return HabitModel.find({});
     }
 
     @Post('/')
@@ -17,13 +16,12 @@ export class HabitsController {
     }
 
     @Delete('/:id')
-    delete(@Param("id") id: string) {
-        return HabitModel.deleteOne({_id: id});
+    delete(@Param('id') id: string) {
+        return HabitModel.deleteOne({ _id: id });
     }
 
     @Get('/:id/statuses')
-    getStatus(@Param("id") id: string){
-        return habitDayStatusModel.find({habitId: id});
+    getStatus(@Param('id') id: string) {
+        return habitDayStatusModel.find({ habitId: id });
     }
-
 }

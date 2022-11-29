@@ -13,11 +13,11 @@ const habitSchema = new Schema<IHabitDayStatus>({
 export const habitDayStatusModel = model<IHabitDayStatus>('habitDayStatus', habitSchema);
 
 export interface IHabitDayStatus {
-    habitId: string
-    status: 'done' | 'not-done' | string
-    note: string
+    habitId: string;
+    status: 'done' | 'not-done' | string;
+    note: string;
     date: Date;
-    userId:string
+    userId: string;
     createdAt?: Date;
     _id: string;
 }

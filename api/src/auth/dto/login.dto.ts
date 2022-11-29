@@ -1,9 +1,9 @@
-import {IsString} from "bonfire-rest";
+import { IsString } from 'bonfire-rest';
 
 export class LoginDto {
     @IsString()
-    username: string
+    username: string;
 
     @IsString()
-    password: string
+    password: string;
 }

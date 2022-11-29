@@ -1,8 +1,7 @@
-import {IHabit} from "../interfaces/habit.interface";
-import {IsDateString, IsString} from "bonfire-rest";
+import { IHabit } from '../interfaces/habit.interface';
+import { IsDateString, IsString } from 'bonfire-rest';
 
 export class CreateHabitDto implements IHabit {
-
     _id: string;
 
     @IsString()
@@ -17,5 +16,4 @@ export class CreateHabitDto implements IHabit {
     startDate: Date;
 
     userId: string;
-
 }
