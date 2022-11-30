@@ -2,7 +2,7 @@ import { IsString } from 'bonfire-rest';
 
 export class LoginDto {
     @IsString()
-    username: string;
+    email: string;
 
     @IsString()
     password: string;

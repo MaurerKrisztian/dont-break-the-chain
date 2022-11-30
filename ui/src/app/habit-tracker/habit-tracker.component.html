@@ -1,4 +1,9 @@
-<input type="text" #habitName> <button (click)="createHabit(habitName.value)">Add</button>
+<input type="text" placeholder="habit name" #habitName>
+<textarea type="text" placeholder="description" #description></textarea>
+<input type="date" placeholder="start date" #date [value]="getToday()">
+<input type="number" placeholder="goal days" #days>
+
+<button (click)="createHabit(habitName.value)">Create</button>
 
 
 <div class="habitContainer" *ngFor="let habit of habits">

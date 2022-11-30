@@ -31,6 +31,11 @@ export class HabitTrackerComponent implements OnInit {
     this.ngOnInit();
   }
 
+  getToday(){
+    const date = new Date()
+    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+  }
+
   getHabits(): Promise<IHabit[]> | any[] {
     return this.habitEndpoints.getAll() || [];
   }

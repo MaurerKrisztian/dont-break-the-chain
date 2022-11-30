@@ -1,5 +1,16 @@
 @import "src/shared.scss";
 
+input, textarea {
+  //width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  border: 3px solid #555;
+}
+
 .note-input{
   padding: 5px;
   margin: 5px;

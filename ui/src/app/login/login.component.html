@@ -1,0 +1,46 @@
+
+<!-- partial:index.partial.html -->
+<div class="login-form">
+  <form *ngIf="isLoginTemplate; else registerForm">
+    <h1>Login</h1>
+    <div class="content">
+      <div class="input-field">
+        <input #email type="email" placeholder="Email" autocomplete="nope">
+      </div>
+      <div class="input-field">
+        <input #password type="password" placeholder="Password" autocomplete="new-password">
+      </div>
+      <a href="#" class="link">Forgot Your Password?</a>
+    </div>
+    <div class="action">
+      <button (click)="setTemplate(false)">Register</button>
+      <button (click)="login({email: email.value, password: password.value})"  value="Submit">Sign in</button>
+    </div>
+  </form>
+</div>
+
+<ng-template #registerForm>
+
+  <h1>Register</h1>
+  <div class="content">
+    <div class="input-field">
+      <input #register_username type="text" placeholder="username" autocomplete="nope">
+    </div>
+    <div class="input-field">
+      <input #register_email type="text" placeholder="email" autocomplete="nope">
+    </div>
+    <div class="input-field">
+      <input #register_password type="password" placeholder="Password" autocomplete="new-password">
+    </div>
+    <div class="input-field">
+      <input #register_password2 type="password" placeholder="Password" autocomplete="new-password">
+    </div>
+  </div>
+  <div class="action">
+
+    <button (click)="setTemplate(true)">back</button>
+    <button (click)="register({email: register_email.value, username: register_username.value, password: register_password.value, password2: register_password2.value})">Register</button>
+  </div>
+
+
+</ng-template>

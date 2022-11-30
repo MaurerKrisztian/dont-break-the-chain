@@ -9,20 +9,24 @@ import {BoxTableComponent} from "./box-activity/box-table/box-table.component";
 import {HabitEndpoints} from "../services/habit.endpoints";
 import {HabitDayStatusEndpoints} from "../services/habit-day-status.endpoints";
 import {ApiService} from "../services/api.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { MatDialogModule} from "@angular/material/dialog";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login.component';
+import {AuthEndpoints} from "../services/login.endpoints";
+import {TokenInterceptorService} from "../services/token-interceptor.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     HabitTrackerComponent,
     BoxComponent,
-    BoxTableComponent
+    BoxTableComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,11 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     FormsModule,
   ],
-  providers: [HabitEndpoints, HabitDayStatusEndpoints, ApiService],
+  providers: [HabitEndpoints, HabitDayStatusEndpoints, ApiService, AuthEndpoints,     {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
